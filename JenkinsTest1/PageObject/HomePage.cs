@@ -21,11 +21,10 @@ namespace JenkinsTest1.PageObject
 
         private IWebElement AllStockLink => Driver.FindElement(By.XPath("/html/body/div[3]/main/div[2]/div/div[1]/a"));
 
-        private IWebElement AllCategoriesLink => Driver.FindElement(By.XPath("/html/body/div[3]/main/div[5]/div/div[1]/a"));
+        private IWebElement AllCategoriesLink => Driver.FindElement(By.XPath("/html/body/div[3]/main/div[5]/div/d"));
 
         public AllStocksPage ClickOnAllStocksLink()
         {
-            Trace.WriteLine("Нажатие на ссылку Все скидки");
             logger.Info("Нажатие на ссылку Все скидки");
             AllStockLink.ClickOnElement();
             return new AllStocksPage(Driver);

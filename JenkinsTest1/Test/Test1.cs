@@ -25,7 +25,6 @@ namespace JenkinsTest1.Test
         [SetUp]
         public void SetUp()
         {
-            logger.Info("Тестовый проект" + Assembly.GetCallingAssembly().GetName().Name);
             logger.Info("Тест-кейс " + TestContext.CurrentContext.Test.ClassName);
             Driver = webDriverUtils.InitDriver();
             Driver.Navigate().GoToUrl("https://santehnika-online.ru/");
@@ -67,7 +66,8 @@ namespace JenkinsTest1.Test
         {
             ITakesScreenshot ssDriver = Driver;
             Screenshot screenshot = ssDriver.GetScreenshot();
-            screenshot.SaveAsFile("C:\\Users\\isa4e\\source\\repos\\JenkinsTest1\\JenkinsTest1\\bin\\Debug\\logs\\" + TestContext.CurrentContext.Test.Name + ".jpg");
+            string ScreenshotPath = AppDomain.CurrentDomain.BaseDirectory;
+            screenshot.SaveAsFile(ScreenshotPath + "logs\\" + TestContext.CurrentContext.Test.Name + ".jpg");
         }
     }
 }
