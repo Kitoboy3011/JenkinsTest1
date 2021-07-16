@@ -1,6 +1,9 @@
-﻿using JenkinsTest1.PageObject;
+﻿using Allure.Commons;
+using JenkinsTest1.PageObject;
 using JenkinsTest1.Utils;
 using NLog;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -16,6 +19,8 @@ using System.Threading.Tasks;
 namespace JenkinsTest1.Test
 {
     [TestFixture]
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     class Test1
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -29,7 +34,15 @@ namespace JenkinsTest1.Test
             Driver = webDriverUtils.InitDriver();
             Driver.Navigate().GoToUrl("https://santehnika-online.ru/");
         }
+
         [Test]
+        [AllureTag("Regression")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureIssue("ISSUE-1")]
+        [AllureTms("TMS-12")]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("NoAssert")]
         public void TransitionToAllStocksPage()
         {
             logger.Info("Тест " + TestContext.CurrentContext.Test.Name);
@@ -38,6 +51,13 @@ namespace JenkinsTest1.Test
             Assert.IsTrue(allStocksPage.IsOpen());
         }
         [Test]
+        [AllureTag("Regression")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureIssue("ISSUE-1")]
+        [AllureTms("TMS-12")]
+        [AllureOwner("User")]
+        [AllureSuite("PassedSuite")]
+        [AllureSubSuite("NoAssert")]
         public void TransitionToCatalogPage()
         {
             logger.Info("Тест " + TestContext.CurrentContext.Test.Name);
